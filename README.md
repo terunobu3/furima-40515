@@ -44,7 +44,7 @@ Things you may want to cover:
 | prefecture_id    | integer    | null: false | 
 | delivery_day_id  | integer    | null: false | 
 | price            | integer    | null: false | 
-| user             | references | foreign_key: true  | 
+| user             | references | null: false foreign_key: true  | 
 
 ### Association
 - has_many :comments
@@ -54,8 +54,8 @@ Things you may want to cover:
 ## ordersテーブル
 | Column  | Type       | Option            | 
 | ------- | ---------- | ----------------- | 
-| user | references | foreign_key: true | 
-| item | references | foreign_key: true | 
+| user | references | null: false foreign_key: true | 
+| item | references | null: false foreign_key: true | 
 
 ### Association
 - belongs_to :item
@@ -71,7 +71,7 @@ Things you may want to cover:
 | block         | string     | null: false | 
 | building      | string     |             | 
 | phone_number  | string     | null: false | 
-| order         | references | foreign_key: true | 
+| order         | references | null: false foreign_key: true | 
 
 ### Association
 - belongs_to :order
