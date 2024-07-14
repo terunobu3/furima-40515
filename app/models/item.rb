@@ -9,7 +9,7 @@ class Item < ApplicationRecord
     validates :text, length; {maximum: 1000}
     validates :price, numericality: {only_integer: ture, message: 'は半角で入力してください。' }
   end
-  with_options numericality: { other_than: 0, message: "を選択してください" }
+  with_options numericality: { other_than: 0, message: "を選択してください" } do
     validates :prefecture_id
     validates :category_id
     validates :status_id

@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all
+    @items = Item.includes(:user).order(created_at: :DESC)
   end
 
   def new
@@ -12,5 +12,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_prams)
+    if @item.valid?
+      @item.save
+      redirect_to active: :index
+    else
+      render action: :new
+    end
   end
 end
