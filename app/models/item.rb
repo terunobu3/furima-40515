@@ -1,13 +1,13 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :prefecture
-  belongs_to_active_hash :category
+  belongs_to :prefecture
+  belongs_to :category
  
-  with_options presence: ture do
+  with_options presence: true do
     validates :image
     validates :name, length: {maximum: 40}
-    validates :text, length; {maximum: 1000}
-    validates :price, numericality: {only_integer: ture, message: 'は半角で入力してください。' }
+    validates :text, length: {maximum: 1000}
+    validates :price, numericality: {only_integer: true, message: 'は半角で入力してください。' }
   end
   with_options numericality: { other_than: 0, message: "を選択してください" } do
     validates :prefecture_id
