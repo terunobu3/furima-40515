@@ -72,6 +72,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include '販売価格は範囲内に設定してください'
       end
+      it 'ユーザーが紐づいていないと保存できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include 'Userを入力してください'
+      end
     end
   end
 end

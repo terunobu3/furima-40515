@@ -1,4 +1,4 @@
-window.addEventListener('turbo:load', () => {
+function setupPriceCalc() {
   const priceInput = document.getElementById("item-price");
   priceInput.addEventListener("input", () => {
     const inputValue = priceInput.value;
@@ -7,10 +7,6 @@ window.addEventListener('turbo:load', () => {
     const addSalesProfit =  document.getElementById("profit");
     addSalesProfit.innerHTML = Math.floor(inputValue - (inputValue * 0.1));
   });
-});
-
-//function post (){
-//  console.log("イベント発火");
-//};
-
-//window.addEventListener('turbo:load', post );
+}
+document.addEventListener('turbo:load', setupPriceCalc)
+document.addEventListener('turbo:render', setupPriceCalc)
