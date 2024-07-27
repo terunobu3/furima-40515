@@ -1,13 +1,13 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :prefecture
-  belongs_to :category
-  belongs_to :status
-  belongs_to :delivery
-  belongs_to :delivery_days
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :category
+  belongs_to_active_hash :status
+  belongs_to_active_hash :delivery
+  belongs_to_active_hash :delivery_days
   has_one_attached :image
   belongs_to :user
-  has_one :order
+  #has_one :order
 
   with_options presence: true do
     validates :image

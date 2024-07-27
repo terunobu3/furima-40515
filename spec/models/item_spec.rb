@@ -6,17 +6,16 @@ RSpec.describe Item, type: :model do
   end
   describe '商品登録' do
     context '商品登録がうまくいくとき' do
-      it "image, name, text, category_id, status_id, delivery_id,
-          delivery_days_id, priceが全て存在すれば登録できる" do
+      it "image, name, text, category_id, status_id, delivery_id, delivery_days_id, priceが全て存在すれば登録できる" do
         expect(@item).to be_valid
       end
     end
 
     context '商品登録がうまくいかないとき' do
-      it 'imageが選択されてないと登録できない' do
+      it '商品画像が選択されてないと登録できない' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "画像を登録してください"
+        expect(@item.errors.full_messages).to include "画像を入力してください"
       end
       it 'nameが空だと登録できない' do
         @item.name = nil
@@ -58,10 +57,10 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "販売価格を入力してください"
       end
-      it 'priceが全角では登録できない' do
-        @item.price = '１０００'
+      it 'priceが半角でないと登録できない' do
+        @item.price = '１２３４'
         @item.valid?
-        expect(@item.errors.full_messages).to include '販売価格は半角で入力してください'
+        expect(@item.errors.full_messages).to include '販売価格は半角で入力してください。'
       end
       it 'priceが299以下だと登録できない' do
         @item.price = 299
@@ -75,3 +74,4 @@ RSpec.describe Item, type: :model do
       end
     end
   end
+end
