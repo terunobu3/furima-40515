@@ -10,6 +10,8 @@ module Furima40515
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.active_storage.variant_processor = :mini_magic
+    
 
     #日本語の言語設定
     config.i18n.default_locale = :ja
@@ -18,7 +20,7 @@ module Furima40515
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Tokyo"
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

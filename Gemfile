@@ -84,4 +84,8 @@ end
 
 gem 'devise'
 gem 'rails-i18n'
-
+gem 'active_hash'
+gem 'mini_magick'
+gem 'image_processing', '~>1.2'
+gem 'webpacker', '~> 4.0'
+gem 'psych', '< 4.0.0'
