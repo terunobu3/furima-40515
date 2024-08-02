@@ -23,6 +23,10 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def edit
+    redirect_to root_path if current_user.id != @item.user_id
+  end
+
   private
 
   def item_params
