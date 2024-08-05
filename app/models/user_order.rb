@@ -4,10 +4,10 @@ class UserOrder
 
   with_options presence: true do
     #validates :token
-    validates :postcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :postcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "にハイフンを入れてください(-)"}
     validates :city
     validates :block
-    validates :phone_number, format: { with: /\A\d{10,11}\z/,message: "is invalid. Include hyphen(-)"}
+    validates :phone_number, format: { with: /\A\d{10,11}\z/,message: "にはハイフンを入れないでください"}
     validates :user_id
     validates :item_id
   end
