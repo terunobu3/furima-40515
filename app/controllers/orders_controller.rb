@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    if user_signed_in? && current_user.id != @item.user_id 
+    if user_signed_in? && current_user.id != @item.user_id
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       @item = Item.find(params[:item_id])
       @user_order = UserOrder.new
