@@ -55,10 +55,20 @@ RSpec.describe UserOrder, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include("電話番号を入力してください")
       end
+      it '電話番号が9桁以下だと購入できない' do
+        @order.phone_number = '12345678'
+        @order.valid?
+        expect(@order.errors.full_messages).to include ("電話番号は半角ハイフンなし10～11桁で入力してください")
+      end
+      it '電話番号が12桁以上だと購入できない' do
+        @order.phone_number = '1234567890123'
+        @order.valid?
+        expect(@order.errors.full_messages).to include ("電話番号は半角ハイフンなし10～11桁で入力してください")
+      end
       it 'phone_numberにハイフンがあると購入できないこと' do
         @order.phone_number = '090-1111222'
         @order.valid?
-        expect(@order.errors.full_messages).to include('電話番号はハイフンなしで入力してください')
+        expect(@order.errors.full_messages).to include("電話番号は半角ハイフンなし10～11桁で入力してください")
       end
       it 'user_idが空では購入できないこと' do
         @order.user_id = nil

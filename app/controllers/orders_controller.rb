@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
   def index
     if user_signed_in? && current_user.id != @item.user_id
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-      @item = Item.find(params[:item_id])
       @user_order = UserOrder.new
     else
     redirect_to root_path
@@ -14,7 +13,6 @@ class OrdersController < ApplicationController
 
   def create
     @item = Item.find(params[:item_id])
-    @user_order = UserOrder.new(order_params)
     if @user_order.valid?
       pay_item(@item.price)
       @user_order.save
