@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @user_order = UserOrder.new(order_params)
     if @user_order.valid?
       pay_item(@item.price)
       @user_order.save
